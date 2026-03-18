@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPC Scanner</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>UPC Music Scanner</h1>
+        <div id="header-controls">
+            <button id="theme-toggle">☀️ Light</button>
+            <button id="about-button">About</button>
+        </div>
+        
+        <div id="error-message" class="error hidden"></div>
+        
+        <div id="scanner-container">
+            <video id="video" autoplay playsinline></video>
+        </div>
+        
+        <div id="controls">
+            <button id="start-button">Start Scanner</button>
+            <button id="stop-button" disabled>Stop Scanner</button>
+        </div>
+        
+        <div id="results">
+            <h2>Scanned Codes</h2>
+            <div id="scanned-codes"></div>
+        </div>
+    </div>
+    
+    <div id="about-dialog" class="dialog hidden">
+        <div class="dialog-content">
+            <h2>About</h2>
+            <div class="about-info">
+                <p>Written by Chris Schumann</p>
+                <p><a href="" target="_blank">GitHub Repository</a></p>
+                <p>Icons created by Nicolas Ramallo for The Noun Project</p>
+            </div>
+            <button id="about-close-button">Close</button>
+        </div>
+    </div>
+
+    <div id="result-dialog" class="dialog hidden">
+        <div class="dialog-content">
+            <h2>Search Results</h2>
+            <div id="dialog-info"></div>
+            <button id="append-sheet-button">Append Spreadsheet</button>
+            <button id="scan-another-button">Scan Another</button>
+        </div>
+    </div>
+    
+    <script src="scanner.js"></script>
+</body>
+</html>
