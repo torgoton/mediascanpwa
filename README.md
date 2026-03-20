@@ -37,8 +37,7 @@ This code is for a tiny web app meant to quickly add music media to a spreadshee
 - Click "Authorize access"
 - Google hasn't verified this app, so click Advanced, then Go to Untitled project
 - Read the warnings carefully, and if you wish to proceed, click Continue
-- Make a copy of the file `env.dev.template` and call it `.env.dev`
-- COPY the Deployment ID and paste it into the GS_APP_ID string that new file `.env.dev`
+- COPY the Deployment ID and send it to your phone
 - Close the Apps Script tab
 
 ### Start the local server
@@ -58,6 +57,7 @@ do that is as follows.
 (Any browser that supports BarcodeDetector should work, but it is not widely available.)
 
 ### Use the app
+- Upon first run, it will ask for your Deploy ID. Enter the string saved above.
 - Click "Start Scanner"
 - Point the camera at a UPC code on a CD or vinyl record
 - If the code is recognized, the app will query MusicBrainz for information about the media
