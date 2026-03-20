@@ -1,4 +1,4 @@
-const CACHE = 'upc-scanner-v2';
+const CACHE = 'upc-scanner-v3';
 const ASSETS = [
     '/',
     '/index.html',

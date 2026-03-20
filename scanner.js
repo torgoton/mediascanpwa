@@ -1,9 +1,4 @@
-const GS_APP_ID = ENV['GS_APP_ID'] || null;
-
-if (!GS_APP_ID) {
-  alert('Google Sheets App ID is not set. Please set GS_APP_ID in your environment variables.');
-  throw new Error('Missing GS_APP_ID environment variable');
-}
+let gsAppId = localStorage.getItem('GS_APP_ID');
 
 let videoStream = null;
 let scanning = false;
@@ -231,7 +226,7 @@ async function lookupCD(barcode) {
 // Add CD data to Google Sheet
 async function addToGoogleSheet(cdData) {
     try {
-        const response = await fetch('https://script.google.com/macros/s/' + GS_APP_ID + '/exec', {
+        const response = await fetch('https://script.google.com/macros/s/' + gsAppId + '/exec', {
             method: 'POST',
             mode: 'no-cors',
             headers: {
@@ -324,7 +319,12 @@ if (localStorage.getItem('theme') === 'light') {
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js');
     }
-    
+
+    if (!gsAppId) {
+        gsAppId = prompt('Enter your Google Sheets Deployment ID:');
+        if (gsAppId) localStorage.setItem('GS_APP_ID', gsAppId);
+    }
+
     const supported = await checkBarcodeDetectorSupport();
     if (supported) {
         console.log('BarcodeDetector is ready to use');
