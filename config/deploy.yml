@@ -1,0 +1,23 @@
+service: mediascan
+image: torgoton/mediascanpwa
+
+servers:
+  web:
+    - 178.105.172.119
+
+# Cloudflare DNS must be gray-cloud (proxy off) so Let's Encrypt can reach the server directly.
+proxy:
+  ssl: true
+  host: mediascan.chrisschumann.dev
+
+registry:
+  server: ghcr.io
+  username: torgoton
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+ssh:
+  user: deploy

@@ -1,0 +1,6 @@
+.git
+.env*
+*.md
+.kamal
+config
+app_script.gs
