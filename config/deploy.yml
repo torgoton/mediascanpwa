@@ -9,6 +9,8 @@ servers:
 proxy:
   ssl: true
   host: mediascan.chrisschumann.dev
+  healthcheck:
+    path: /
 
 registry:
   server: ghcr.io
