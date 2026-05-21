@@ -40,24 +40,35 @@ This code is for a tiny web app meant to quickly add music media to a spreadshee
 - COPY the Deployment ID and send it to your phone
 - Close the Apps Script tab
 
-### Start the local server
+### Load the app
+
+#### Option 1 - load from my site
+
+- On your phone, open this link: https://mediascan.chrisschumann.dev/
+
+Any browser that supports BarcodeDetector should work, but that's not many.
+
+https://caniuse.com/mdn-api_barcodedetector details which browsers on which
+plaftorms offer it.
+
+Easy browsers to install it from currently (May 2026):
+- Chrome for Android
+- Opera Mobile
+- Samsung Internet
+
+#### Option 2 - run it on your machine
 
 Use of the camera in a web app requires the app be served over a secured (HTTPS) connection.
 If you have an HTTPS certificate, you can serve the app as you wish. One easy-ish way to
 do that is as follows.
 
 - Start a terminal shell in this directory
-- Set your app id with `. .env.dev`
 - Start a server with `python3 -m http.server 8000`
 - In another terminal, run `ngrok http 8000`
-
-### Load the app
-
-- On your Android phone, use Google Chrome to open the URL provided by ngrok
-(Any browser that supports BarcodeDetector should work, but it is not widely available.)
+- That will give you a URL you can visit on your phone, something like `https://abc123.ngrok.io`
 
 ### Use the app
-- Upon first run, it will ask for your Deploy ID. Enter the string saved above.
+- Upon first run, it will ask for your Deploy ID. Enter the string from your Google Sheet saved above.
 - Click "Start Scanner"
 - Point the camera at a UPC code on a CD or vinyl record
 - If the code is recognized, the app will query MusicBrainz for information about the media
@@ -69,13 +80,13 @@ do that is as follows.
 
 ### Installing the app
 
-- To install the app on your phone, click the browser menu (three dots) and select "Add to Home screen"
+- To install the app on your phone, find the option in your browser that says "Add to Home screen" or something similar
 - This will allow you to use the app without opening the browser first, and it will also give you a more native app-like experience
 - The app will scan barcodes offline, but both the media search and adding to your spreadsheet require a network connection
 
 ### Filling in data
 
-The spreadsheet now has a new menu, "MusicBrainz", with an item "Fill Missing Data". That will look at each row in the
+The spreadsheet has a menu, "MusicBrainz", with an item "Fill Missing Data". That will look at each row in the
 spreadsheet, and for each row with a barcode and any missing fields, it will query MusicBrainz for the missing data. It
 will not overwrite anything you've added.
 
