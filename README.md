@@ -86,7 +86,9 @@ do that is as follows.
 
 ### Filling in data
 
-The spreadsheet has a menu, "MusicBrainz", with an item "Fill Missing Data". That will look at each row in the
+#### Data about the media
+
+The spreadsheet has a menu, "Fill Data", with an item "Fill Missing Data". That will look at each row in the
 spreadsheet, and for each row with a barcode and any missing fields, it will query MusicBrainz for the missing data. It
 will not overwrite anything you've added.
 
@@ -98,8 +100,19 @@ Google Sheets limits task run time to 6 minutes. It may take longer than that to
 fills in missing data with "??", it will not request rows that have values. Run the script again as many times as you
 need for it to finish.
 
+#### Data about how desired it is
+
+On that menu is also "Fetch Discogs Want Counts". This REQUIRES an API token from Discogs.com.
+You can enter that easily with the "Set Discogs API Token" menu entry.
+
+What it does is go through your spreadsheet, line by line, and if the 16th column (Q) is empty, it will ask discogs.com how many users on that site have said they would like a copy of that title in some format - not necessarily the format you have.
+
+Discogs.com also has a rate limit, and the code respects that.
+
 ## Other notes
 
 - If you have any issues or suggestions for improvement, please open an issue on the GitHub repository for this project
 
-Icons Created by Nicolas Ramallo from the Noun Project
+- Icons Created by Nicolas Ramallo from the Noun Project
+
+- The code does not check for HTTP 429 responses, so if you reduce the delays in the code, expect that to go poorly.
